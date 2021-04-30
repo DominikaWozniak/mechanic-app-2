@@ -13,9 +13,6 @@ public class Invoice {
     private Date issueDate;
     private Date paymentDate;
     private Double totalPrice;
-    @ManyToOne
-    @JoinColumn
-    private Worker worker;
     private String description;
     @OneToMany
     private List<Repair> repairs;
@@ -58,14 +55,6 @@ public class Invoice {
 
     public void setRepairs(List<Repair> repairs) {
         this.repairs = repairs;
-    }
-
-    public Worker getWorker() {
-        return worker;
-    }
-
-    public void setWorker(Worker worker) {
-        this.worker = worker;
     }
 
     public String getDescription() {
