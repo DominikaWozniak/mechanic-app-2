@@ -11,8 +11,9 @@ public class Car {
     private String brand;
     private String yearProduction;
 
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(fetch = FetchType.LAZY,
+            optional = false)
+    @JoinColumn(nullable = false)
     private CarOwner carOwner;
 
     public Long getId() {

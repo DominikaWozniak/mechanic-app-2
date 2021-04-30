@@ -2,7 +2,6 @@ package pl.project.mechanicapp2.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Repair {
@@ -12,9 +11,13 @@ public class Repair {
     private Long id;
     private Date repairDate;
 
+    @ManyToOne(fetch = FetchType.LAZY,
+            optional = false)
+    @JoinColumn(nullable = false)
+    private Invoice invoice;
+
     @OneToOne
     private Car car;
-
     private String repairDescription;
 
 
@@ -48,5 +51,13 @@ public class Repair {
 
     public void setRepairDescription(String repairDescription) {
         this.repairDescription = repairDescription;
+    }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 }

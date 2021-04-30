@@ -14,7 +14,10 @@ public class Invoice {
     private Date paymentDate;
     private Double totalPrice;
     private String description;
-    @OneToMany
+    private boolean isPaid;
+    @OneToMany(mappedBy = "invoice",
+                fetch = FetchType.LAZY,
+                cascade = CascadeType.ALL)
     private List<Repair> repairs;
 
     public Long getId() {
@@ -63,5 +66,13 @@ public class Invoice {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
     }
 }

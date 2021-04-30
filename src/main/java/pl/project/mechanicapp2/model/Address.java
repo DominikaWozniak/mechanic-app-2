@@ -1,9 +1,6 @@
 package pl.project.mechanicapp2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -15,6 +12,10 @@ public class Address {
     private String houseNumber;
     private String postCode;
     private String city;
+    @ManyToOne(fetch = FetchType.LAZY,
+            optional = false)
+    @JoinColumn(nullable = false)
+    private CarOwner carOwner;
 
     public Long getId() {
         return id;
@@ -56,4 +57,11 @@ public class Address {
         this.city = city;
     }
 
+    public CarOwner getCarOwner() {
+        return carOwner;
+    }
+
+    public void setCarOwner(CarOwner carOwner) {
+        this.carOwner = carOwner;
+    }
 }

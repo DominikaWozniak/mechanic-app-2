@@ -3,7 +3,7 @@ package pl.project.mechanicapp2.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity()
 public class CarOwner {
 
     @Id
@@ -14,10 +14,14 @@ public class CarOwner {
     private String phoneNumber;
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "carOwner",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    @OneToMany
+    @OneToMany(mappedBy = "carOwner",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<Car> cars;
 
     public Long getId() {
