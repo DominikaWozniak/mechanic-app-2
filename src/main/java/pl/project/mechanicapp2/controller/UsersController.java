@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.project.mechanicapp2.model.Users;
 import pl.project.mechanicapp2.services.UsersService;
@@ -33,7 +34,21 @@ public class UsersController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("newUser") Users users){
         usersService.saveItem(users);
-        return "redirect:/";
+        return "redirect:/users";
+    }
+
+    @GetMapping("/formUpdateUser/{id}")
+    public String formUpdateUser(@PathVariable (value = "id")  Long id, Model model){
+        Users users = usersService.getItemById(id);
+
+        model.addAttribute("user", users);
+        return "admin_templates/update_user";
+    }
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable (value = "id") Long id, Model model){
+        this.usersService.deleteItemById(id);
+        return "redirect:/users";
     }
 
 }
