@@ -46,4 +46,11 @@ public class CarOwnerController {
         carService.saveItem(car);
         return "redirect:/carOwnerList";
     }
+
+    @GetMapping("/ownerForm")
+    public String newOwnerForm(Model model){
+        CarOwner carOwner = new CarOwner();
+        model.addAttribute("newOwner", carOwner);
+        return "new_owner";
+    }
 }
