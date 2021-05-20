@@ -37,6 +37,7 @@ public class CarOwnerController {
     @GetMapping("/carForm/{id}")
     public String newCarForm(@PathVariable("id") Long id, Model model){
         Car car = new Car();
+        car.setCarOwner(carOwnerService.getItemById(id));
         model.addAttribute("newCar", car);
         return "new_car";
     }
@@ -52,5 +53,24 @@ public class CarOwnerController {
         CarOwner carOwner = new CarOwner();
         model.addAttribute("newOwner", carOwner);
         return "new_owner";
+    }
+
+    @PostMapping("/saveOwner")
+    public String saveOwner(@ModelAttribute("newOwner") CarOwner carOwner){
+        carOwnerService.saveItem(carOwner);
+        return "redirect:/carOwnerList";
+    }
+
+    @GetMapping("/deleteOwner/{id}")
+    public String deleteOwner(@PathVariable(value = "id") Long id){
+        this.carOwnerService.deleteItemById(id);
+        return "redirect:/carOwnerList";
+    }
+
+    @GetMapping("/formUpdateOwner/{id}")
+    public String updateOwner(@PathVariable(value = "id") Long id, Model model){
+        CarOwner carOwner = carOwnerService.getItemById(id);
+        model.addAttribute("updateOwner", carOwner);
+        return "update_owner_form";
     }
 }
