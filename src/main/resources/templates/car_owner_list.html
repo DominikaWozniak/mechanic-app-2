@@ -3,16 +3,19 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Mechanic Application</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+    <link th:href="@{../css/main_styles.css}" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container my-2">
+<div class="top-title-container">
     <h1>Customers</h1>
-    <a th:href="@{/ownerForm}" class="btn btn-primary btn-sm mb-3">Add new customer</a>
-    <table border="1" class="table table-striped table-responsive-md">
+</div>
+<div class="top-button-container">
+    <a th:href="@{/ownerForm}" class="top-button button">Add new customer</a>
+    <a th:href="@{/}" class="top-button button">Main menu</a>
+    <a th:href="@{/}" class="top-button button">Invoices</a>
+</div>
+<div class="my_container">
+    <table border="1" class="table">
         <thead>
         <tr>
             <th>Id</th>
@@ -32,11 +35,8 @@
             <td th:text="${owners.lastName}"></td>
             <td th:text="${owners.phoneNumber}"></td>
             <td>
-                <a th:href="@{/formUpdateOwner/{id}(id=${owners.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deleteOwner/{id}(id=${owners.id})}" class="btn btn-danger">Delete</a>
-                <a th:href="@{/selectCars/{id}(id=${owners.id})}" class="btn btn-primary">Show Cars</a>
-                <a th:href="@{/carForm/{id}(id=${owners.id})}" class="btn btn-primary">Add Car</a>
-                <a th:href="@{/addAddress/{id}(id=${owners.id})}" class="btn btn-primary">Show Address</a>
+                <a th:href="@{/moreInfoOwner/{id}(id=${owners.id})}" class="btn">Show more info and options</a>
+
             </td>
         </tr>
         </tbody>
