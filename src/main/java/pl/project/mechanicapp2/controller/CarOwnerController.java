@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.project.mechanicapp2.model.Car;
 import pl.project.mechanicapp2.model.CarOwner;
+import pl.project.mechanicapp2.services.AddressService;
 import pl.project.mechanicapp2.services.CarOwnerService;
 import pl.project.mechanicapp2.services.CarService;
 
@@ -16,22 +17,18 @@ public class CarOwnerController {
 
     private CarOwnerService carOwnerService;
     private CarService carService;
+    private AddressService addressService;
 
-    public CarOwnerController(CarOwnerService carOwnerService, CarService carService) {
+    public CarOwnerController(CarOwnerService carOwnerService, CarService carService, AddressService addressService) {
         this.carOwnerService = carOwnerService;
         this.carService = carService;
+        this.addressService = addressService;
     }
 
     @GetMapping("/carOwnerList")
     public String viewOwnerList(Model model){
         model.addAttribute("carOwners", carOwnerService.findAllItems());
         return "car_owner_list";
-    }
-
-    @GetMapping("/selectCars/{id}")
-    public String selectCars(@PathVariable("id") Long id, Model model){
-        model.addAttribute("carsByOwnerId", carService.findCarByOwnerId(id));
-        return "selected_cars";
     }
 
     @GetMapping("/carForm/{id}")
@@ -58,7 +55,7 @@ public class CarOwnerController {
     @PostMapping("/saveOwner")
     public String saveOwner(@ModelAttribute("newOwner") CarOwner carOwner){
         carOwnerService.saveItem(carOwner);
-        return "redirect:/carOwnerList";
+        return "redirect:/moreInfoOwner/" + carOwner.getId();
     }
 
     @GetMapping("/deleteOwner/{id}")
@@ -72,5 +69,13 @@ public class CarOwnerController {
         CarOwner carOwner = carOwnerService.getItemById(id);
         model.addAttribute("updateOwner", carOwner);
         return "update_owner_form";
+    }
+
+    @GetMapping("/moreInfoOwner/{id}")
+    public String infoAndOptionsPage(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("viewThisOwner", carOwnerService.getItemById(id));
+        model.addAttribute("carsByOwnerId", carService.findCarByOwnerId(id));
+        model.addAttribute("address", addressService.findByOwnerId(id));
+        return "more_info_owner";
     }
 }
