@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+body{
+    background-color: silver;
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;;
+}
+
+.top-title-container{
+    font-size: 30px;
+    margin-left: 470px;
+}
+
+.top-button-container{
+    margin-left: 470px;
+    margin-bottom: 50px;
+}
+
+.bottom-tittle{
+    font-size: 25px;
+}
+
+.top-button{
+    background-color: dimgray;
+    padding: 15px 15px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.my_container{
+    margin-right:auto;
+    margin-left:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+th, td {
+    padding: 25px;
+    text-align: left;
+}
+
+.table {
+    border-collapse: collapse;
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+.btn{
+    padding: 15px;
+    background-color: antiquewhite;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+}
+
+thead{
+    background-color: gainsboro;
+}
+
+.my_container2{
+    padding: 15px;
+    margin-left: 15px;
+}
+
