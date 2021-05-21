@@ -43,4 +43,9 @@ public class AddressServiceImpl implements AddressService {
     public void deleteItemById(Long id) {
         this.addressRepository.deleteById(id);
     }
+
+    @Override
+    public List<Address> findByOwnerId(Long id) {
+        return addressRepository.findAddressByOwnerId(id);
+    }
 }
