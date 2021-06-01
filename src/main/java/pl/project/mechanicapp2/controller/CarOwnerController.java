@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.project.mechanicapp2.model.Car;
 import pl.project.mechanicapp2.model.CarOwner;
 import pl.project.mechanicapp2.services.AddressService;
 import pl.project.mechanicapp2.services.CarOwnerService;
@@ -29,20 +28,6 @@ public class CarOwnerController {
     public String viewOwnerList(Model model){
         model.addAttribute("carOwners", carOwnerService.findAllItems());
         return "car_owner_list";
-    }
-
-    @GetMapping("/carForm/{id}")
-    public String newCarForm(@PathVariable("id") Long id, Model model){
-        Car car = new Car();
-        car.setCarOwner(carOwnerService.getItemById(id));
-        model.addAttribute("newCar", car);
-        return "new_car";
-    }
-
-    @PostMapping("/saveCar")
-    public String saveCar(@ModelAttribute("newCar") Car car){
-        carService.saveItem(car);
-        return "redirect:/carOwnerList";
     }
 
     @GetMapping("/ownerForm")
