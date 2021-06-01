@@ -97,8 +97,8 @@
             <td th:text="${cars.brand}"></td>
             <td th:text="${cars.yearProduction}"></td>
             <td>
-                <a th:href="@{/carFormUpdate}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deleteCar}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/carFormUpdate/{id}(id=${cars.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteCar/{id}(id=${cars.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
