@@ -11,12 +11,11 @@ public class Repair {
     private Long id;
     private Date repairDate;
 
-    @ManyToOne(fetch = FetchType.LAZY,
-            optional = false)
-    @JoinColumn(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Invoice invoice;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Car car;
     private String repairDescription;
 
