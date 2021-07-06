@@ -45,7 +45,7 @@
         <h1 class="bottom-tittle">Address</h1>
     </div>
     <div class="top-button-container2">
-        <a class="top-button button">Add new address</a>
+        <a class="top-button button" th:href="@{/addressForm/{id}(id=${viewThisOwner.id})}" >Add new address</a>
     </div>
 
     <table border="1" class="table">
@@ -66,8 +66,8 @@
             <td th:text="${addresses.postCode}"></td>
             <td th:text="${addresses.street}"></td>
             <td>
-                <a th:href="@{/carFormUpdate}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deleteCar}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/addressFormUpdate/{id}(id=${addresses.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteAddress/{id}(id=${addresses.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -99,6 +99,7 @@
             <td>
                 <a th:href="@{/carFormUpdate/{id}(id=${cars.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteCar/{id}(id=${cars.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/newRepair/{id}(id=${cars.id})}" class="btn btn-danger">Add new repair</a>
             </td>
         </tr>
         </tbody>

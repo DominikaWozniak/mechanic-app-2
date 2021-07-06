@@ -17,7 +17,7 @@
     <form action="#" th:action="@{/saveCar}" th:object="${newCar}" method="post">
         <input type="text" th:field="*{brand}" placeholder="Brand" class="form-control mb-4 col-4">
         <input type="text" th:field="*{yearProduction}" placeholder="Year production" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{carOwner.id}" placeholder="Owner id" class="form-control mb-4 col-4">
+        <input type="hidden" th:field="*{carOwner.id}" placeholder="Owner id" class="form-control mb-4 col-4">
         <button type="submit" class="btn btn-info col-2">Save Car</button>
     </form>
 
